@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+<div class="container">
+    <h3>Ask me a question</h3>
+    <input type="text" id="questionInput" placeholder="Enter your question">
+    <button onclick="checkQuestion()">Accept</button>
+    <button onclick="checkQuestion()">Decline</button>
+    <div id="response"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+<script>
+const acceptedQuestions = [
+"What is your name?",
+"How old are you?",
+"Where do you live?"
+];
+function isQuestionAccepted(question) {
+return acceptedQuestions.includes(question);
+}
+function checkQuestion() {
+const questionInput = document.getElementById("questionInput").value.trim();
+const responseElement = document.getElementById("response");
+
+if (questionInput === "") {
+    responseElement.textContent = "Please enter a question.";
+    responseElement.style.color = "red";
+    return;
+}
+
+if (isQuestionAccepted(questionInput)) {
+    responseElement.textContent = "Accepted: You asked a valid question.";
+    responseElement.style.color = "green";
+} else {
+    responseElement.textContent = "Declined: Sorry, I cannot answer that question.";
+    responseElement.style.color = "red";
+}
+}
+
+</script>
+    
